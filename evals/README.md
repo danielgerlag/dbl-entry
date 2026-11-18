@@ -13,7 +13,15 @@ python validate_graders.py       # every task's reference solution must score 1.
 python baselines.py --conditions none,spec,skill
 python baselines.py --suite all --conditions none,skill --model gpt-5.4-mini --workers 3
 python optimize.py --skill dblentry-reporting --models gpt-5.4-mini,gpt-5-nano --budget 40  # writes out/<skill>.optimized.md (never overwrites the real skill)
+python check.py --skill dblentry-reporting   # regression gate after editing a skill (exit 1 on regression)
 ```
+
+**Regression gate.** `check.py` runs each task with its own skill (3 repeats by default) and compares pass rates
+with the committed `baseline.json`. It fails if a task that used to pass now fails most repeats, or if the mean
+score drops by more than `--margin` (0.03). Small slips are listed but tolerated, since runs are noisy. After an
+intentional improvement, record it with `python check.py --update-baseline` (add `--skill` to refresh one skill,
+`--models a,b` for other agents). The baseline is per agent model; `gpt-5.4-mini`, `Kimi-K2.6` and `DeepSeek-V4-Flash` are recorded (check them with `--models`).
+It needs the same Foundry access as the other evals, so it is run by hand rather than in CI.
 
 LLM access uses Azure CLI credentials against a Microsoft Foundry endpoint (`az login` first). Copy
 `.env.example` to `.env` (gitignored) and set `EVAL_ENDPOINT`, `EVAL_SUBSCRIPTION`, `EVAL_AGENT_MODEL` (the agent

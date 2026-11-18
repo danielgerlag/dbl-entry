@@ -1,0 +1,552 @@
+{
+ "DeepSeek-V4-Flash": {
+  "buy_shares": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "cash_sale_dimensions": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "correct_wrong_customer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "credit_sale_then_payment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "customer_receivable_history": {
+   "failures": [
+    "final answer should mention 1100",
+    "final answer should mention 2000"
+   ],
+   "mean": 0.6666666666666666,
+   "pass_rate": 0.6666666666666666,
+   "repeats": 3
+  },
+  "dated_payments": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "deferred_revenue_recognition": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fixed_amount_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_convert_answer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_invoice": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "hierarchy_and_answer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "invest_new_books": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_and_repayment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_interest_accrual": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "monthly_spend": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "new_expense_account": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "pay_rent": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "percentage_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "prepaid_insurance": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "product_sales_hidden_key": {
+   "failures": [
+    "final answer should mention 800",
+    "final answer should mention 950"
+   ],
+   "mean": 0.5,
+   "pass_rate": 0.3333333333333333,
+   "repeats": 3
+  },
+  "quarter_profit_and_cash": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "quarterly_amortization": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "rate_lookup": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "regional_sales_hidden_key": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "sell_fifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "sell_lifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "split_and_value": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "trial_balance_total": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "two_debit_legs": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  }
+ },
+ "Kimi-K2.6": {
+  "buy_shares": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "cash_sale_dimensions": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "correct_wrong_customer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "credit_sale_then_payment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "customer_receivable_history": {
+   "failures": [
+    "final answer should mention 1100",
+    "final answer should mention 2000"
+   ],
+   "mean": 0.6666666666666666,
+   "pass_rate": 0.6666666666666666,
+   "repeats": 3
+  },
+  "dated_payments": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "deferred_revenue_recognition": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fixed_amount_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_convert_answer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_invoice": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "hierarchy_and_answer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "invest_new_books": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_and_repayment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_interest_accrual": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "monthly_spend": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "new_expense_account": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "pay_rent": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "percentage_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "prepaid_insurance": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "product_sales_hidden_key": {
+   "failures": [
+    "final answer should mention 800",
+    "final answer should mention 950"
+   ],
+   "mean": 0.3333333333333333,
+   "pass_rate": 0.3333333333333333,
+   "repeats": 3
+  },
+  "quarter_profit_and_cash": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "quarterly_amortization": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "rate_lookup": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "regional_sales_hidden_key": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "sell_fifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "sell_lifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "split_and_value": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "trial_balance_total": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "two_debit_legs": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  }
+ },
+ "gpt-5.4-mini": {
+  "buy_shares": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "cash_sale_dimensions": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "correct_wrong_customer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "credit_sale_then_payment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "customer_receivable_history": {
+   "failures": [
+    "final answer should mention 1100"
+   ],
+   "mean": 0.6666666666666666,
+   "pass_rate": 0.3333333333333333,
+   "repeats": 3
+  },
+  "dated_payments": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "deferred_revenue_recognition": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fixed_amount_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_convert_answer": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "fx_invoice": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "hierarchy_and_answer": {
+   "failures": [
+    "final answer should mention 1000"
+   ],
+   "mean": 0.9166666666666666,
+   "pass_rate": 0.6666666666666666,
+   "repeats": 3
+  },
+  "invest_new_books": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_and_repayment": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "loan_interest_accrual": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "monthly_spend": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "new_expense_account": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "pay_rent": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "percentage_split": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "prepaid_insurance": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "product_sales_hidden_key": {
+   "failures": [
+    "final answer should mention 800",
+    "final answer should mention 950"
+   ],
+   "mean": 0.0,
+   "pass_rate": 0.0,
+   "repeats": 3
+  },
+  "quarter_profit_and_cash": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "quarterly_amortization": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "rate_lookup": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "regional_sales_hidden_key": {
+   "failures": [
+    "final answer should mention 800",
+    "final answer should mention 900"
+   ],
+   "mean": 0.6666666666666666,
+   "pass_rate": 0.6666666666666666,
+   "repeats": 3
+  },
+  "sell_fifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "sell_lifo": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "split_and_value": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "trial_balance_total": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  },
+  "two_debit_legs": {
+   "failures": [],
+   "mean": 1.0,
+   "pass_rate": 1.0,
+   "repeats": 3
+  }
+ }
+}
