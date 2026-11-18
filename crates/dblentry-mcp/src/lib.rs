@@ -1,10 +1,13 @@
+mod skills;
+
 use std::sync::Arc;
 
 use dblentry_core::storage::StorageBackend;
 use rmcp::handler::server::tool::ToolRouter;
 use rmcp::handler::server::wrapper::Parameters;
 use rmcp::model::*;
-use rmcp::{tool, tool_handler, tool_router, ServerHandler, ServiceExt};
+use rmcp::service::RequestContext;
+use rmcp::{tool, tool_handler, tool_router, ErrorData, RoleServer, ServerHandler, ServiceExt};
 use schemars::JsonSchema;
 use serde::Deserialize;
 
@@ -97,6 +100,12 @@ struct GetIncomeStatementInput {
     /// Optional entity
     #[serde(default)]
     entity: Option<String>,
+}
+
+#[derive(Deserialize, JsonSchema)]
+struct GetSkillInput {
+    /// Skill name, as returned by list_skills
+    name: String,
 }
 
 #[derive(Deserialize, JsonSchema)]
@@ -263,6 +272,29 @@ impl DblEntryMcp {
         FQL_REFERENCE.to_string()
     }
 
+    #[tool(description = "List the available DblEntry agent skills (task-oriented guides). Start with dblentry-navigator.")]
+    fn list_skills(&self) -> String {
+        skills::all()
+            .iter()
+            .map(|s| format!("- {}: {}", s.name, s.description))
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    #[tool(description = "Get the full text of a DblEntry agent skill by name (see list_skills).")]
+    fn get_skill(
+        &self,
+        Parameters(input): Parameters<GetSkillInput>,
+    ) -> Result<CallToolResult, ErrorData> {
+        match skills::find(&input.name) {
+            Some(skill) => Ok(CallToolResult::success(vec![Content::text(skill.body)])),
+            None => Ok(CallToolResult::error(vec![Content::text(format!(
+                "Skill not found: {}. Use list_skills to see available skills.",
+                input.name
+            ))])),
+        }
+    }
+
     #[tool(description = "List all entities in the system.")]
     fn list_entities(&self) -> String {
         let entities: Vec<String> = self
@@ -319,12 +351,79 @@ impl DblEntryMcp {
 #[tool_handler]
 impl ServerHandler for DblEntryMcp {
     fn get_info(&self) -> ServerInfo {
-        ServerInfo::new(ServerCapabilities::builder().enable_tools().build())
-            .with_instructions(
-                "DblEntry is a Layer 2 database for double-entry bookkeeping. \
-                 Use the get_fql_spec tool first to learn the FQL query language, \
-                 then use execute_fql or the convenience tools to interact with the ledger.",
-            )
+        ServerInfo::new(
+            ServerCapabilities::builder()
+                .enable_tools()
+                .enable_resources()
+                .enable_prompts()
+                .build(),
+        )
+        .with_instructions(
+            "DblEntry is a Layer 2 database for double-entry bookkeeping. \
+             Read the dblentry-navigator skill first (get_skill, the \
+             dblentry://skills/dblentry-navigator resource, or the prompt of the same name), \
+             and use the get_fql_spec tool to learn the FQL query language. \
+             Then use execute_fql or the convenience tools to interact with the ledger.",
+        )
+    }
+
+    async fn list_resources(
+        &self,
+        _request: Option<PaginatedRequestParams>,
+        _context: RequestContext<RoleServer>,
+    ) -> Result<ListResourcesResult, ErrorData> {
+        let resources = skills::all()
+            .iter()
+            .map(|s| {
+                RawResource::new(skills::uri(s.name), s.name)
+                    .with_description(s.description)
+                    .with_mime_type("text/markdown")
+                    .no_annotation()
+            })
+            .collect();
+        Ok(ListResourcesResult::with_all_items(resources))
+    }
+
+    async fn read_resource(
+        &self,
+        request: ReadResourceRequestParams,
+        _context: RequestContext<RoleServer>,
+    ) -> Result<ReadResourceResult, ErrorData> {
+        let skill = skills::name_from_uri(&request.uri)
+            .and_then(skills::find)
+            .ok_or_else(|| {
+                ErrorData::resource_not_found(format!("Unknown resource: {}", request.uri), None)
+            })?;
+        Ok(ReadResourceResult::new(vec![
+            ResourceContents::text(skill.body, request.uri).with_mime_type("text/markdown"),
+        ]))
+    }
+
+    async fn list_prompts(
+        &self,
+        _request: Option<PaginatedRequestParams>,
+        _context: RequestContext<RoleServer>,
+    ) -> Result<ListPromptsResult, ErrorData> {
+        let prompts = skills::all()
+            .iter()
+            .map(|s| Prompt::new(s.name, Some(s.description), None))
+            .collect();
+        Ok(ListPromptsResult::with_all_items(prompts))
+    }
+
+    async fn get_prompt(
+        &self,
+        request: GetPromptRequestParams,
+        _context: RequestContext<RoleServer>,
+    ) -> Result<GetPromptResult, ErrorData> {
+        let skill = skills::find(&request.name).ok_or_else(|| {
+            ErrorData::invalid_params(format!("Unknown prompt: {}", request.name), None)
+        })?;
+        Ok(GetPromptResult::new(vec![PromptMessage::new_text(
+            PromptMessageRole::User,
+            skill.body,
+        )])
+        .with_description(skill.description))
     }
 }
 

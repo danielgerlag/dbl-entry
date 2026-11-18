@@ -55,6 +55,22 @@ DEBIT @loans, CREDIT @interest_earned;
 
 The entire language fits in a single system prompt. There are no tables to `CREATE`, no schemas to manage, no `INSERT INTO ... SELECT` chains to orchestrate. An agent that knows the handful of FQL verbs (`CREATE ACCOUNT`, `CREATE JOURNAL`, `GET`, `ACCRUE`, `SET RATE`) can perform any accounting operation — and the double-entry invariants are enforced by DblEntry, not by the agent. This makes FQL a natural tool-use interface for financial AI workflows.
 
+### MCP server and agent skills
+
+Run `dblentry --mcp` to serve DblEntry to any MCP client over stdio (logs go to stderr). Add `--config` with `[storage] backend = "sqlite"` to persist data; the default is in-memory.
+
+The server exposes tools (`execute_fql`, `get_balance`, `get_statement`, `get_trial_balance`, `get_income_statement`, `get_schema`, `list_entities`, `get_fql_spec`) plus a set of **agent skills** - task-oriented guides embedded in the binary. Each skill is available as an MCP resource (`dblentry://skills/<name>`), as an MCP prompt, and through the `list_skills` / `get_skill` tools for clients that only support tools:
+
+| Skill | Use it for |
+|-------|-----------|
+| `dblentry-navigator` | Start here: orient in the ledger, entities, choosing tools |
+| `dblentry-record-transactions` | Chart of accounts, journals, dimensions, reversals |
+| `dblentry-reporting` | Balances, statements, trial balance, income statement |
+| `dblentry-accruals-and-schedules` | Rates, `ACCRUE`, `DISTRIBUTE` |
+| `dblentry-multi-currency-and-units` | FX conversion, shares/lots, `SELL`, `SPLIT` |
+
+The skills live in `crates/dblentry-mcp/skills/<name>/SKILL.md` and can also be copied into any skills-aware agent.
+
 ## Quick Start
 
 ### Build & Run

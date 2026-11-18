@@ -70,7 +70,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let filter = EnvFilter::try_new(&config.logging.level)
         .unwrap_or_else(|_| EnvFilter::new("info"));
 
-    if config.logging.json {
+    // In MCP mode stdout carries the protocol, so logs must go to stderr.
+    if cli.mcp {
+        if config.logging.json {
+            fmt().json().with_env_filter(filter).with_writer(std::io::stderr).init();
+        } else {
+            fmt().with_env_filter(filter).with_writer(std::io::stderr).init();
+        }
+    } else if config.logging.json {
         fmt().json().with_env_filter(filter).init();
     } else {
         fmt().with_env_filter(filter).init();

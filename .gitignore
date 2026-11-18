@@ -4,3 +4,10 @@
 docs/human/node_modules
 docs/human/.vitepress/dist
 docs/human/.vitepress/cache
+
+# Local config and data (may contain credentials)
+dblentry.toml
+*.db
+*.db-wal
+*.db-shm
+.env
